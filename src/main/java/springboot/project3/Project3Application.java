@@ -8,12 +8,11 @@ import java.util.*;
 @RestController
 @SpringBootApplication
 public class Project3Application {
-
 	public static void main(String[] args) {
 		SpringApplication.run(Project3Application.class, args);
 	}
-	@GetMapping("/")
-	public String homepage(){
+	@GetMapping("/occurance")
+	public String occurance(){
 		String str="Shreya.s.120998@gmail.com";
 		str=str.toLowerCase();
 		str=str.replaceAll("[^a-z]","");
@@ -27,5 +26,29 @@ public class Project3Application {
 			}
 		}
 		return hm.toString();
+	}
+	@GetMapping("/isprime")
+	public int isprime(){
+		return Project3Application.prime(5);
+	}
+	public static int prime(int x) {
+		int count = 0;
+		int num = 2;
+		while (true) {
+			boolean flag = true;
+			for (int i = 2; i < num; i++) {
+				if (num % i == 0) {
+					flag = false;
+					break;
+				}
+			}
+			if (flag) {
+				count++;
+				if (count == x) {
+					return num;
+				}
+			}
+			num++;
+		}
 	}
 }
